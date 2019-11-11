@@ -1,0 +1,54 @@
+{% load static %}
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="{% url 'home'%}"><h2 class="text-primary"><i class="fas fa-hamburger"></i>
+                YUMMY TUMMY</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li>
+                        <div href="" id="mega-menu">Menus</div>
+
+                    <div class="menus-left">
+                        <p>ddd</p>
+                        <p>ddd</p>
+                        <p>ddd</p>
+                        <p>ddd</p>
+                        <p>ddd</p>
+                        <p>ddd</p>
+
+                    </div>
+                </li>
+
+
+                </ul>
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                    <b class="text-info">{{login_user}} : </b><i class="fas fa-user-circle"></i>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    {% if 'Login' in login_user %}
+                    <a class="dropdown-item" href="{% url 'login'%}">Login</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'userprofile'%}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
+
+                    {% endif%}
+
+
+                </div>
+
+
+            </div>
+
+
+    </div>
+    </nav>
+    </div>
+</header>

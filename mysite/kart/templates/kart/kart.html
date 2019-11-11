@@ -1,0 +1,78 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>YUMMY TUMMY</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    {% include 'includes/navbar.html'%}
+</div>
+
+
+<section class="products ">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-9">
+                <form method="post">
+                    {% csrf_token %}
+                    <table id="myTable" class="table table-borderd">
+                        <tr class="header header bg-primary text-white">
+                            <th>Dish</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th></th>
+                        </tr>
+
+
+                        <tr class="bg-light">
+                            <td><img src="{{dish.image.url}}" width="120px"></td>
+                            <td><input type="hidden" value="{{dish.name}}" name="dish_name">{{dish.name}}</td>
+                            <td><input type="hidden" value="{{dish.price}}" name="dish_price">{{dish.price}}</td>
+                            <td><input type="number" placeholder="Qty" name="dish_qty" value="{{dish_qty}}"></td>
+
+                            <td><a href=""> <i class="fas fa-trash text-danger"></i></a></td>
+
+                        </tr>
+
+                        <tr class="bg-light">
+                            <td>Total</td>
+                            <td></td>
+                            <td><span class="text-info">{{dish_qty}}</span>  X</td>
+                            <td>{% if total %} Rs.{{total}} {%else%} Rs.{{dish.price}}{% endif%}</td>
+
+                            <td> <a href=""> <i class="fas fa-trash text-danger"></i></a> </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>{% if 'Yes' in kart_done %}
+
+                                {%else%}
+                                <input type="submit" class="btn btn-info" value="Check Total">
+                                {% endif%}
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="{% url 'withlist_kart' dish.id %}" class="btn btn-primary">Process to Checkout</a> </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>Checkout</title>
+{% endblock %}
+
+{% block content %}
+{% include 'includes/header.html'%}
+
+
+
+<section class="products">
+    <div class="container">
+        Check Out Page
+         <div class="row">
+        <div class="col-md-9">
+            <div class="ragister_form">
+                <form method="post">
+                    {{ragister_form.as_p}}
+                    <input type="submit" value="Create an Account" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="login_form">
+            <form method="post">
+                {{login_form.as_p}}
+                <input type="submit" value="Login" class="btn btn-primary">
+            </form>
+            </div>
+        </div>
+         </div>
+    </div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>YUMMY TUMMY</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+{% include 'includes/navbar.html'%}
+
+
+
+
+
+<section class="products ">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-12 myres pad0" style="height:250px; overflow:hidden;">
+                <img src="{{restaurants.image.url}}" width="100%" >
+                <div class="title">
+                    <h2>{{restaurants.name}}</h2>
+                    <div class=""><i class="fa fa-phone-square" aria-hidden="true"></i> :{{restaurants.mobile}}</div>
+                    <div class=""><i class="fas fa-map-marker-alt"></i> :{{restaurants.address.city}},{{restaurants.address.country}} {{restaurants.address.postal}}</div>
+                    <div class="">Visit:<a href="">{{restaurants.website_url}}</a> </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                {% for food in foods %}
+                <div class="row product animated  bounceInLeft delay-1.2s">
+                    <div class="col-md-3"><img src="{{food.image.url}}" alt="{{food.image.url}}" width="100%"></div>
+                    <div class="col-md-9">
+                        <div class="mymenus">
+                            <h2>Food Name:{{food.name}}</h2>
+                            <p>{{food.description}}</p>
+                            <div class="col pad0 "><i class="fas fa-rupee-sign"></i> : <b>{{food.offer_price}}</b><span class="float-right "> <del>{{food.price}} </del></span></div>
+
+                    <div class="col pad0"> <a href="{% url 'details' food.id %}" class="btn btn-info margin10">Add</a></div>
+
+
+                        </div>
+                    </div>
+                </div>
+                 {% endfor %}
+            </div>
+
+
+            <div class="col-md-3">
+
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% include 'includes/footer.html'%}
+
+{% endblock %}

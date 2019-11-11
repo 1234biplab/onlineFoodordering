@@ -1,0 +1,104 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>YUMMY TUMMY</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+    {% include 'includes/navbar.html'%}
+
+
+<section class="padding-10">
+    <div class="container search_food animated  bounce delay-2s" >
+        <div class="col-md-12">
+        <form method="get" >
+            <!--{{ request.GET.q }}-->
+            <input type="text" placeholder="Search.." name="q" value="{{ request.GET.q }}" class="search_box">
+            <button type="submit" class="btn btn-primary search_btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="products ">
+    <div class="container">
+        <h2>All Dish</h2>
+            <hr>
+        <div class="row">
+
+        {% for food in foods %}
+        <div class="col-md-3">
+
+           <a href="{% url 'details' food.id %}">
+
+               <div class="product animated  bounceInLeft delay-1.2s">
+
+                <div class="image">
+                    {% load static %}
+                    <img src="{{food.image.url}}" alt="{{food.image.url}}" width="100%">
+
+                </div>
+                <div class="data">
+
+                    <h3 class="title text-info text-uppercase mar10"><br>{{food.name}}</h3>
+                    <p>{{food.description}}</p>
+
+                    <h6><i class="fas fa-map-marker-alt"></i> :{{food.restaurant}}</h6>
+                    <div class="col pad0 "><i class="fas fa-rupee-sign"></i> : <b>{{food.offer_price}}</b><span class="float-right "> <del>{{food.price}} </del></span></div>
+
+                    <div class="col pad0"> <a href="{% url 'details' food.id %}" class="btn btn-info margin10">Add</a></div>
+                </div>
+            </div></a>
+        </div>
+
+        {% endfor %}
+
+
+        </div>
+        <a  class="view_all" href="{% url 'foods_all'%}">View All</a>
+        <br><br>
+        <h2>Restaurant</h2>
+            <hr>
+        <div class="row">
+
+        {% for res in all_Restaurant %}
+        <div class="col-md-6">
+            <div class="rest_group">
+                <div class="image">
+<img src="{{res.image.url}}" width="100%">
+
+
+                </div>
+                <div class="data1">
+
+                    <h3 class="title text-info text-uppercase mar10"><br>{{res.name}}</h3>
+                    <p>{{res.description}}</p>
+                    <h6><i class="fas fa-map-marker-alt"></i> :{{res.city}}</h6>
+                    <div class="col pad0 ">Mobile: <b>{{res.telephone}}</b><span class="float-right "> <del> </del></span></div>
+
+                    <div class="col pad0"> <a href="{% url 'show_res' res.id %}" class="btn btn-info margin10">Show</a></div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        </div>
+
+
+
+
+    </div>
+
+</section>
+
+{% include 'includes/footer.html'%}
+
+{% endblock %}

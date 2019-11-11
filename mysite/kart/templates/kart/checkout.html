@@ -1,0 +1,41 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>Checkout</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    {% include 'includes/navbar.html'%}
+</div>
+
+
+
+<section class="products">
+    <div class="container">
+
+         <div class="row">
+        <div class="col-md-9">
+            <div class="ragister_form">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ragister_form.as_p}}
+                    <input type="submit" value="Create an Account" class="btn btn-primary">
+                    <div class="">if You Have already Account Please <a href="{% url 'login'%}">Login</a> Here</div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+         </div>
+    </div>
+
+</section>
+{% endblock %}

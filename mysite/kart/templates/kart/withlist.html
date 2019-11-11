@@ -1,0 +1,76 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>YUMMY TUMMY</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    {% include 'includes/navbar.html'%}
+</div>
+
+
+<section class="products ">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="">
+                    <!--9958757080-->
+                    <table class="table bg-white">
+                        {% for food in foods %}
+
+
+                        <tr>
+                            <td class="text-secondary">{{food.dish_name}} </td>
+                            <td class="text-secondary"><small class="bg-muted">{{food.dish_qty}} x </small>{{food.dish_price}}</td>
+                            <td><a href="" class=" btn btn-danger"> X </a> </td>
+
+                        </tr>
+                         {% endfor %}
+                        <tr class="bg-dark text-white">
+                            <td>Total </td>
+                            <td></td>
+                            <td>Rs.{{total}}</td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <table class="table" style="background:#f7fbff;">
+
+
+
+                        <tr>
+                            <td>Total </td>
+                            <td>Rs.{{total}}</td>
+                        </tr>
+                        <tr>
+                            <td>Discount </td>
+                            <td>Rs.0.00</td>
+                        </tr>
+                        <tr>
+                            <td width="100%"><a href="{% url 'food_checkout' 1 %}" class="btn btn-primary text-white">Checkout</a> </td>
+
+
+
+                        </tr>
+
+                    </table>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+<title>Account</title>
+{% endblock %}
+
+
+{% block content %}
+
+{% include 'navbar.html'%}
+<div class="container">
+
+
+<br>
+  <div class="main">
+    <div class="cover_photo"><img src="{{profile.cover.url}}" width="100%"> </div>
+    <div class="pro_image"><img src="{{profile.profile_image.url}}" width="200px" height="200px" >
+        <h1><a href="">{{profile.user}}</a></h1>
+
+    </div>
+  </div>
+  <div class="pro_details">{{profile.bio}}</div>
+
+
+  <div class="pro_detail">
+    <div class="container">
+      <div class="user_details">
+        <h4>Good Name<span class="user_d">:{{profile.fname}}</span></h4>
+        <h4>Last Name<span class="user_d">:{{profile.lname}}</span></h4>
+        <h4>Bio :<span class="user_d">:{{profile.bio}}</span></h4>
+        <h4>Joined :<span class="user_d">:{{profile.joined}}</span></h4>
+        <h4>Date of Birth :<span class="user_d">:{{profile.dob}}</span></h4>
+
+
+        <a href="{% url 'update_profile' profile.pk %}">Edit Profile</a>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<br>
+<br>
+<br>
+
+
+
+{% endblock %}
